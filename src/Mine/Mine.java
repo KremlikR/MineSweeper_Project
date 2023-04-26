@@ -1,5 +1,6 @@
 package Mine;
 
+
 public class Mine {
     public State state;
 
@@ -7,7 +8,7 @@ public class Mine {
         this.state = state;
     }
 
-    private String value= " X ";
+    private String value= " A ";
 
     public String getValue() {
         return value;
@@ -15,5 +16,10 @@ public class Mine {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

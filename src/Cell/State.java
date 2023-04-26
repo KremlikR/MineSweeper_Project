@@ -6,4 +6,5 @@ public abstract class State {
 
     public abstract String onLeftClick();
     public abstract String onRightClick();
+
 }

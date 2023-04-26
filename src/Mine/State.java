@@ -1,10 +1,10 @@
 package Mine;
 
-import Cell.Cell;
+
 
 public abstract class State {
-    protected Cell cell;
-    public State(Cell cell){this.cell=cell;}
+    protected Mine mine;
+    public State(Mine mine){this.mine =mine;}
 
     public abstract String onLeftClick();
     public abstract String onRightClick();

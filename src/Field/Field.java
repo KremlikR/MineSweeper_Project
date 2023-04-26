@@ -1,13 +1,17 @@
 package Field;
 
+import Cell.Cell;
+import Mine.Mine;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 public class Field {
 
     private Table table;
 
 
-    private ArrayList<ArrayList<String>> graf_pole= new ArrayList<>();
+    private ArrayList<ArrayList<Object>> graf_pole= new ArrayList<>();
     public Field(Table table ) {
         this.table = table;
     }
@@ -25,10 +29,10 @@ public class Field {
 
 
 for (int a = 0;a<x;a++){
-    graf_pole.add(new ArrayList<String>());
+    graf_pole.add(new ArrayList<Object>());
 for (int b=0;b<y;b++){
 
-    graf_pole.get(a).add(" 0 ");
+    graf_pole.get(a).add(new Cell());
 }
 
 }
@@ -41,7 +45,7 @@ while(bomb>0){
                 Random rd = new Random();
                 int random= rd.nextInt(times+1);
                 if(random<=value) {
-                    graf_pole.get(a).set(b, " 9 ");
+                    graf_pole.get(a).set(b, new Mine());
                     bomb--;
                 }
             }

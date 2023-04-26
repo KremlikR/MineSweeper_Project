@@ -19,7 +19,7 @@ public class Captured extends State {
     @Override
     public String onRightClick() {
         cell.setState(new Hidden(cell));
-        cell.setValue(" 0 ");
+        cell.setValue(" X ");
         return cell.getValue();
     }
 
