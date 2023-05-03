@@ -1,3 +1,4 @@
+import Core.Game;
 import Field.Field;
 import Field.Table;
 
@@ -12,7 +13,7 @@ public class Main {
 
         System.out.println(field.print());
 
-
+Game game =new Game();
 
 
 
