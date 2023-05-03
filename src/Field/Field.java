@@ -6,6 +6,7 @@ import Mine.Mine;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+import Core.*;
 public class Field {
 
     private Table table;

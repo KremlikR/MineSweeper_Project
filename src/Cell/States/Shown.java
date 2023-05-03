@@ -2,6 +2,9 @@ package Cell.States;
 
 import Cell.State;
 import Cell.Cell;
+
+import java.awt.image.BufferedImage;
+
 public class Shown extends State {
 
     public Shown(Cell cell) { super(cell);}
@@ -10,12 +13,12 @@ public class Shown extends State {
 
 
     @Override
-    public String onLeftClick() {
-        return cell.getValue();
+    public BufferedImage onLeftClick() {
+        return cell.shown();
     }
 
     @Override
-    public String onRightClick() {
-        return cell.getValue();
+    public BufferedImage onRightClick() {
+        return cell.shown();
     }
 }

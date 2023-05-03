@@ -1,10 +1,12 @@
 package Cell;
 
+import java.awt.image.BufferedImage;
+
 public abstract class State {
     protected Cell cell;
     public State(Cell cell){this.cell=cell;}
 
-    public abstract String onLeftClick();
-    public abstract String onRightClick();
+    public abstract BufferedImage onLeftClick();
+    public abstract BufferedImage onRightClick();
 
 }

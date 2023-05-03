@@ -4,6 +4,7 @@ import Cell.Cell;
 import Cell.State;
 
 import javax.print.DocFlavor;
+import java.awt.image.BufferedImage;
 
 public class Hidden extends State {
 
@@ -14,16 +15,18 @@ public class Hidden extends State {
 
 
     @Override
-    public String onLeftClick() {
+    public BufferedImage onLeftClick() {
        cell.setState(new Shown(cell));
-        cell.setValue(" S ");
-        return cell.getValue();
+
+
+        return cell.shown();
+
     }
 
     @Override
-    public String onRightClick() {
+    public BufferedImage onRightClick() {
      cell.setState(new Captured(cell));
-     cell.setValue(" V ");
-       return cell.getValue();
+
+       return cell.captured();
     }
 }

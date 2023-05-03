@@ -3,6 +3,8 @@ package Cell.States;
 import Cell.Cell;
 import Cell.State;
 
+import java.awt.image.BufferedImage;
+
 public class Captured extends State {
 
     public Captured(Cell cell) {
@@ -12,15 +14,15 @@ public class Captured extends State {
 
 
     @Override
-    public String onLeftClick() {
-        return cell.getValue();
+    public BufferedImage onLeftClick() {
+        return cell.captured();
     }
 
     @Override
-    public String onRightClick() {
+    public BufferedImage onRightClick() {
         cell.setState(new Hidden(cell));
-        cell.setValue(" X ");
-        return cell.getValue();
+
+        return cell.hidden();
     }
 
 

@@ -4,12 +4,13 @@ import javax.swing.*;
 
 
 import java.awt.*;
+import Cell.Cell.*;
 
 public class GamePanel extends JPanel implements  Runnable {
 
 private final int tileSize= 16;
-private final int cols= 100;
-private final int rows=100;
+private final int cols= 24;
+private final int rows=24;
 private final int widht= tileSize*cols;
 private final int height= tileSize*rows;
 
@@ -19,12 +20,25 @@ private final int TPS=200;
 
 private Thread gameThread;
 
+
+
 public  GamePanel(){
     this.setPreferredSize(new Dimension(widht,height));
     this.setBackground(Color.gray);
     this.setDoubleBuffered(true);
 }
 
+    public int getTileSize() {
+        return tileSize;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public int getRows() {
+        return rows;
+    }
 
     @Override
     public void run() {

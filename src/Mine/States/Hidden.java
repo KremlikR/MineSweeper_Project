@@ -6,6 +6,8 @@ package Mine.States;
 import Mine.Mine;
 import Mine.State;
 
+import java.awt.image.BufferedImage;
+
 public class Hidden extends State {
 
 
@@ -14,16 +16,15 @@ public class Hidden extends State {
     }
 
     @Override
-    public String onLeftClick() {
+    public BufferedImage onLeftClick() {
 
-        mine.setValue(" F ");
-        return mine.getValue();
+        return mine.shown();
     }
 
     @Override
-    public String onRightClick() {
+    public BufferedImage onRightClick() {
         mine.setState(new Captured(mine));
-        mine.setValue(" V ");
-        return mine.getValue();
+
+        return mine.captured();
     }
 }
