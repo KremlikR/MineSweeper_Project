@@ -8,10 +8,10 @@ import Mine.State;
 
 import java.awt.image.BufferedImage;
 
-public class Hidden extends State {
+public class HiddenBomb extends State {
 
 
-    public Hidden(Mine mine) {
+    public HiddenBomb(Mine mine) {
         super(mine);
     }
 

@@ -1,10 +1,13 @@
 package Core;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
 import java.awt.*;
 import Cell.Cell.*;
+import Field.Field;
+import Field.Table;
 
 public class GamePanel extends JPanel implements  Runnable {
 
@@ -19,6 +22,8 @@ private final int FPS=120;
 private final int TPS=200;
 
 private Thread gameThread;
+ private    Field field = new Field(new Table(24, 24, 99));
+
 
 
 
@@ -26,6 +31,7 @@ public  GamePanel(){
     this.setPreferredSize(new Dimension(widht,height));
     this.setBackground(Color.gray);
     this.setDoubleBuffered(true);
+
 }
 
     public int getTileSize() {
@@ -53,12 +59,14 @@ public  GamePanel(){
 
     double deltaF=0;
     double deltaT= 0;
+    field.generate();
 
     while(gameThread !=null){
         long currentTime= System.nanoTime();
         deltaT+=(currentTime- previousTime)/timePerTick;
         deltaF+=(currentTime- previousTime)/timePerFrame;
         previousTime=currentTime;
+
     }
 
     if (deltaT>=1){
@@ -80,6 +88,7 @@ public  GamePanel(){
 
     }
     public void update() {
+    field.print();
 
     }
     public void startGameLoop() {

@@ -3,6 +3,7 @@ package Field;
 import Cell.Cell;
 import Mine.Mine;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -33,7 +34,7 @@ for (int a = 0;a<x;a++){
     graf_pole.add(new ArrayList<Object>());
 for (int b=0;b<y;b++){
 
-    graf_pole.get(a).add(new Cell());
+    graf_pole.get(a).add(new Cell(b*100,y*100));
 }
 
 }
@@ -46,7 +47,7 @@ while(bomb>0){
                 Random rd = new Random();
                 int random= rd.nextInt(times+1);
                 if(random<=value) {
-                    graf_pole.get(a).set(b, new Mine());
+                    graf_pole.get(a).set(b, new Mine(b*100,a*100));
                     bomb--;
                 }
             }
@@ -60,21 +61,21 @@ while(bomb>0){
 
 
 
-        public String print(){
+        public Object print(){
             int x = table.getLine();
             int y= table.getCollum();
-String s=" ";
+
     for (int a = 0;a<x;a++){
-        s+=  "\n "  ;
+
                 for (int b=0;b<y;b++){
-                   s+= graf_pole.get(a).get(b);
+                  return  graf_pole.get(b).get(a);
 
                 }
 
             }
 
 
-  return s;
+  return null;
     }}
 
 

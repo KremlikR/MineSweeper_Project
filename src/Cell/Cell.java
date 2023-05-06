@@ -8,12 +8,14 @@ import java.io.IOException;
 
 public class Cell {
     private State state;
-
+    private int X;
+    private int Y;
     public void setState(State state) {
         this.state = state;
     }
-    public Cell(){this.state=new Hidden(this);
-
+    public Cell(int X, int Y){this.state=new Hidden(this);
+this.X= X;
+this.Y=Y;
 
 
 
