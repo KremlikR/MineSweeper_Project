@@ -1,4 +1,4 @@
-package Mine;
+package Entity.Mine;
 
 
 import java.awt.image.BufferedImage;

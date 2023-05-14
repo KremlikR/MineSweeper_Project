@@ -1,7 +1,7 @@
-package Mine;
+package Entity.Mine;
 
 
-import Mine.States.HiddenBomb;
+import Entity.Mine.States.HiddenBomb;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

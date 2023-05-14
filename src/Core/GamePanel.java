@@ -1,22 +1,16 @@
 package Core;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicTreeUI;
 
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import Cell.Cell;
-import Cell.Cell.*;
-
-import Field.Table;
+import Entity.Cell.Cell;
 
 public class GamePanel extends JPanel implements  Runnable {
 
-private final int tileSize= 16;
+public final int tileSize= 16;
 private final int cols= 24;
 private final int rows=24;
 private final int widht= tileSize*cols;
@@ -30,11 +24,29 @@ private Thread gameThread;
 
 
 
+    Cell c =new Cell(this,0,0);
+    Cell c2 =new Cell(this,16,-16);
+ArrayList<ArrayList> field= new ArrayList<>();
+
+public void Generate(){
+
+          for (int a = 0;a<cols;a++) {
+              field.add(new ArrayList<Object>());
+              for (int b = 0; b < rows; b++) {
 
 
+                  field.get(a).add(new Cell(this, a * 16, -(b * 16)));
+              }
+
+
+          }
+
+
+}
 
     ArrayList<ArrayList<Object>> graf_pole= new ArrayList<>();
 public  GamePanel(){
+
     this.setPreferredSize(new Dimension(widht,height));
     this.setBackground(Color.gray);
     this.setDoubleBuffered(true);
@@ -52,7 +64,7 @@ public  GamePanel(){
     public int getRows() {
         return rows;
     }
-    Cell c =new Cell(0,0,this);
+
 
     @Override
     public void run() {
@@ -68,15 +80,6 @@ public  GamePanel(){
     double deltaF=0;
     double deltaT= 0;
 
-     /*   for (int a = 0;a<cols;a++){
-            graf_pole.add(new ArrayList<Object>());
-            for (int b=0;b<rows;b++){
-
-
-                graf_pole.get(a).add(new Cell(b*100,a*100,this));
-            }
-
-        }*/
 
 
     while(gameThread !=null){
@@ -124,8 +127,8 @@ public  GamePanel(){
             for (int a = 0;a<x;a++){
 
                 for (int b=0;b<y;b++){
-                    if (graf_pole.get(b).get(a).getClass()==Cell.class){
-                        Cell cell = (Cell)graf_pole.get(b).get(a);
+                    if (graf_pole.get(b).get(a).getClass()==Entity.Cell.class){
+                        Entity.Cell cell = (Entity.Cell)graf_pole.get(b).get(a);
                      cell.Draw(g2);
 
 
@@ -137,7 +140,8 @@ public  GamePanel(){
 
         Cell cell = c;
         cell.Draw(g2);
-
+Cell cell2=c2;
+cell2.Draw(g2);
 
         g2.dispose();
 

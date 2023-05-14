@@ -1,7 +1,7 @@
-package Cell.States;
+package Entity.Cell.States;
 
-import Cell.Cell;
-import Cell.State;
+import Entity.Cell.Cell;
+import Entity.Cell.State;
 
 
 

@@ -1,8 +1,8 @@
-package Mine.States;
+package Entity.Mine.States;
 
 
-import Mine.Mine;
-import Mine.State;
+import Entity.Mine.Mine;
+import Entity.Mine.State;
 
 import java.awt.image.BufferedImage;
 

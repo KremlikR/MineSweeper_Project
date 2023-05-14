@@ -2,8 +2,8 @@ package Field;
 
 /* package Field;
 
-import Cell.Cell;
-import Mine.Mine;
+import Entity.Cell.Entity.Cell;
+import Entity.Mine.Entity.Mine;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -51,7 +51,7 @@ for (int a = 0;a<x;a++){
     graf_pole.add(new ArrayList<Object>());
 for (int b=0;b<y;b++){
 
-    graf_pole.get(a).add(new Cell(b*100,y*100,gp));
+    graf_pole.get(a).add(new Entity.Cell(b*100,y*100,gp));
 }
 
 }
@@ -64,7 +64,7 @@ while(bomb>0){
                 Random rd = new Random();
                 int random= rd.nextInt(times+1);
                 if(random<=value) {
-                    graf_pole.get(a).set(b, new Mine(b*100,a*100).BufferedImageLoad());
+                    graf_pole.get(a).set(b, new Entity.Mine(b*100,a*100).BufferedImageLoad());
                     bomb--;
                 }
             }
@@ -85,8 +85,8 @@ while(bomb>0){
     for (int a = 0;a<x;a++){
 
                 for (int b=0;b<y;b++){
-                   if (graf_pole.get(b).get(a).getClass()==Cell.class){
-                       Cell cell = (Cell)graf_pole.get(b).get(a);
+                   if (graf_pole.get(b).get(a).getClass()==Entity.Cell.class){
+                       Entity.Cell cell = (Entity.Cell)graf_pole.get(b).get(a);
                        cell.Draw(g2);
 
                            }

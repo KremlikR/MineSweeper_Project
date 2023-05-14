@@ -1,9 +1,7 @@
-package Cell.States;
+package Entity.Cell.States;
 
-import Cell.State;
-import Cell.Cell;
-
-import java.awt.image.BufferedImage;
+import Entity.Cell.State;
+import Entity.Cell.Cell;
 
 public class Shown extends State {
 

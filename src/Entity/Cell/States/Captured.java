@@ -1,9 +1,7 @@
-package Cell.States;
+package Entity.Cell.States;
 
-import Cell.Cell;
-import Cell.State;
-
-import java.awt.image.BufferedImage;
+import Entity.Cell.Cell;
+import Entity.Cell.State;
 
 public class Captured extends State {
 

@@ -1,6 +1,4 @@
-package Cell;
-
-import java.awt.image.BufferedImage;
+package Entity.Cell;
 
 public abstract class State {
     protected Cell cell;
