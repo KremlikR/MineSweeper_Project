@@ -13,12 +13,13 @@ public class Shown extends State {
 
 
     @Override
-    public BufferedImage onLeftClick() {
-        return cell.shown();
+    public void onLeftClick() {
+        cell.setState(new Shown(cell));
     }
 
     @Override
-    public BufferedImage onRightClick() {
-        return cell.shown();
+    public void onRightClick() {
+        cell.setState(new Shown(cell));
+
     }
 }

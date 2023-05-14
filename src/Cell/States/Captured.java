@@ -14,15 +14,15 @@ public class Captured extends State {
 
 
     @Override
-    public BufferedImage onLeftClick() {
-        return cell.captured();
+    public void onLeftClick() {
+        cell.setState(new Captured(cell));
     }
 
     @Override
-    public BufferedImage onRightClick() {
+    public void onRightClick() {
         cell.setState(new Hidden(cell));
 
-        return cell.hidden();
+
     }
 
 

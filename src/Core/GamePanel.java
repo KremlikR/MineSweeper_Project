@@ -2,11 +2,16 @@ package Core;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicTreeUI;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import Cell.Cell;
 import Cell.Cell.*;
-import Field.Field;
+
 import Field.Table;
 
 public class GamePanel extends JPanel implements  Runnable {
@@ -22,11 +27,13 @@ private final int FPS=120;
 private final int TPS=200;
 
 private Thread gameThread;
- private    Field field = new Field(new Table(24, 24, 99));
 
 
 
 
+
+
+    ArrayList<ArrayList<Object>> graf_pole= new ArrayList<>();
 public  GamePanel(){
     this.setPreferredSize(new Dimension(widht,height));
     this.setBackground(Color.gray);
@@ -45,6 +52,7 @@ public  GamePanel(){
     public int getRows() {
         return rows;
     }
+    Cell c =new Cell(0,0,this);
 
     @Override
     public void run() {
@@ -59,7 +67,17 @@ public  GamePanel(){
 
     double deltaF=0;
     double deltaT= 0;
-    field.generate();
+
+     /*   for (int a = 0;a<cols;a++){
+            graf_pole.add(new ArrayList<Object>());
+            for (int b=0;b<rows;b++){
+
+
+                graf_pole.get(a).add(new Cell(b*100,a*100,this));
+            }
+
+        }*/
+
 
     while(gameThread !=null){
         long currentTime= System.nanoTime();
@@ -88,11 +106,48 @@ public  GamePanel(){
 
     }
     public void update() {
-    field.print();
+
+    repaint();
 
     }
+    public void paintComponent(Graphics g){
+
+
+    super.paintComponent(g);
+
+        Graphics g2= (Graphics2D)g ;
+
+        /*    int x = rows;
+            int y= rows;
+
+
+            for (int a = 0;a<x;a++){
+
+                for (int b=0;b<y;b++){
+                    if (graf_pole.get(b).get(a).getClass()==Cell.class){
+                        Cell cell = (Cell)graf_pole.get(b).get(a);
+                     cell.Draw(g2);
+
+
+                    }
+
+                }
+
+            }*/
+
+        Cell cell = c;
+        cell.Draw(g2);
+
+
+        g2.dispose();
+
+    }
+
+
+
     public void startGameLoop() {
         this.gameThread = new Thread(this);
         this.gameThread.start();
+
     }
 }

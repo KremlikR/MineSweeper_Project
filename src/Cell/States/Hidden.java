@@ -3,8 +3,7 @@ package Cell.States;
 import Cell.Cell;
 import Cell.State;
 
-import javax.print.DocFlavor;
-import java.awt.image.BufferedImage;
+
 
 public class Hidden extends State {
 
@@ -15,18 +14,19 @@ public class Hidden extends State {
 
 
     @Override
-    public BufferedImage onLeftClick() {
+    public void onLeftClick() {
        cell.setState(new Shown(cell));
 
 
-        return cell.shown();
+
 
     }
 
     @Override
-    public BufferedImage onRightClick() {
+    public void onRightClick() {
      cell.setState(new Captured(cell));
 
-       return cell.captured();
+
+
     }
 }
