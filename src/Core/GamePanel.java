@@ -11,10 +11,10 @@ import Entity.Cell.Cell;
 public class GamePanel extends JPanel implements  Runnable {
 
 public final int tileSize= 16;
-private final int cols= 24;
-private final int rows=24;
-private final int widht= tileSize*cols;
-private final int height= tileSize*rows;
+public final int cols= 24;
+public final int rows=24;
+public final int widht= tileSize*cols;
+public final int height= tileSize*rows;
 
 
 private final int FPS=120;
@@ -24,25 +24,17 @@ private Thread gameThread;
 
 
 
-    Cell c =new Cell(this,0,0);
-    Cell c2 =new Cell(this,16,-16);
+    Cell c =new Cell(this);
+
 ArrayList<ArrayList> field= new ArrayList<>();
 
-public void Generate(){
-
-          for (int a = 0;a<cols;a++) {
-              field.add(new ArrayList<Object>());
-              for (int b = 0; b < rows; b++) {
 
 
-                  field.get(a).add(new Cell(this, a * 16, -(b * 16)));
-              }
 
 
-          }
 
 
-}
+
 
     ArrayList<ArrayList<Object>> graf_pole= new ArrayList<>();
 public  GamePanel(){
@@ -140,8 +132,8 @@ public  GamePanel(){
 
         Cell cell = c;
         cell.Draw(g2);
-Cell cell2=c2;
-cell2.Draw(g2);
+
+
 
         g2.dispose();
 

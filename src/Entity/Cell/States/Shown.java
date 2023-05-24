@@ -1,11 +1,12 @@
 package Entity.Cell.States;
 
+import Entity.Cell.Single_cell;
 import Entity.Cell.State;
 import Entity.Cell.Cell;
 
 public class Shown extends State {
 
-    public Shown(Cell cell) { super(cell);}
+    public Shown(Single_cell cell) { super(cell);}
 
 
 

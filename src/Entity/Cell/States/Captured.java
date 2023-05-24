@@ -1,11 +1,12 @@
 package Entity.Cell.States;
 
 import Entity.Cell.Cell;
+import Entity.Cell.Single_cell;
 import Entity.Cell.State;
 
 public class Captured extends State {
 
-    public Captured(Cell cell) {
+    public Captured(Single_cell cell) {
         super(cell);}
 
 

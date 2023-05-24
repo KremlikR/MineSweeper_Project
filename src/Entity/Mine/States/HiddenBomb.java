@@ -3,28 +3,28 @@ package Entity.Mine.States;
 
 
 
-import Entity.Mine.Mine;
+import Entity.Mine.SingleMine;
 import Entity.Mine.State;
-
-import java.awt.image.BufferedImage;
 
 public class HiddenBomb extends State {
 
 
-    public HiddenBomb(Mine mine) {
+    public HiddenBomb(SingleMine mine) {
         super(mine);
     }
 
     @Override
-    public BufferedImage onLeftClick() {
+    public void onLeftClick() {
 
-        return mine.shown();
+
+
     }
 
     @Override
-    public BufferedImage onRightClick() {
+    public void onRightClick() {
         mine.setState(new Captured(mine));
 
-        return mine.captured();
+
+
     }
 }

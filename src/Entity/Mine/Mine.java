@@ -1,70 +1,125 @@
 package Entity.Mine;
 
-
-import Entity.Mine.States.HiddenBomb;
+import Entity.Cell.States.Hidden;
+import Core.GamePanel;
 
 import javax.imageio.ImageIO;
+import Entity.Position;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class Mine {
-    public State state;
-private int X;
-private int Y;
-    public void setState(State state) {
-        this.state = state;
+public class Mine extends Position {
+
+
+    GamePanel gp;
+
+    ArrayList<SingleMine> single_cell= new ArrayList<SingleMine>();
+
+    public Mine(GamePanel gp) {
+        for (int i=0; i<gp.rows * gp.cols;i++) {
+
+
+            single_cell.add(new SingleMine());
+        }
+        this.gp = gp;
+        getImage();
+        setDefaultValues();
+
     }
-    public  Mine(int X, int Y){this.state=new HiddenBomb(this);
-        this.X= X;
-        this.Y=Y;
 
-
+    public void setDefaultValues() {
+        x = 100;
+        y = 100;
+        state_for = "hidden";
     }
 
 
-
-
-
-
-
-    BufferedImage image = null;
-
-    public BufferedImage hidden() {
-
-
+    public void getImage() {
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/Graphiscs/File.png"));
+
+
+            hidden = ImageIO.read(getClass().getResourceAsStream("/Graphics/File.png"));
+
+            captured = ImageIO.read(getClass().getResourceAsStream("/Graphics/Flag.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return  image;
     }
 
-    public BufferedImage shown() {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/Graphiscs/ONE.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+
+
+
+
+
+/*public void update(){
+
+
+
+
+        }
+*/
+
+
+
+    public void Draw(Graphics g2){
+        int col=0;
+        int row=0;
+        int x=0;
+        int y=0;
+        int plus=0;
+
+        while (col<gp.cols&& row<gp.rows){
+
+            BufferedImage image= null;
+            try{
+                state_for=single_cell.get(plus).getState_for();
+
+
+
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
+            plus++;
+
+            switch (state_for){
+                case "hidden":
+                    image=hidden;
+                    break;
+                case "captured" :
+                    image=captured;
+                    break;
+
+
+            }
+            g2.drawImage(image,x,y,gp.getTileSize(), gp.getTileSize(), null);
+
+            col++;
+            x+= gp.tileSize;
+            if(col== gp.cols){
+                col=0;
+                x=0;
+                row++;
+                y+=gp.tileSize;
+
+
+
+
+            }
+
         }
 
-        return image;
-    }
 
-    public BufferedImage captured() {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/Graphiscs/Flag.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        return image;
+
+
     }
 
 
 
-    public BufferedImage BufferedImageLoad (){
-        return image;
-    }
 }

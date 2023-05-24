@@ -1,13 +1,14 @@
 package Entity.Cell.States;
 
 import Entity.Cell.Cell;
+import Entity.Cell.Single_cell;
 import Entity.Cell.State;
 
 
 
 public class Hidden extends State {
 
-    public Hidden(Cell cell) {
+    public Hidden(Single_cell cell) {
         super(cell);}
 
 
