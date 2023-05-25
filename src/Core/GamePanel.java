@@ -16,7 +16,7 @@ public final int rows=24;
 public final int widht= tileSize*cols;
 public final int height= tileSize*rows;
 
-
+public int bomb =100;
 private final int FPS=120;
 private final int TPS=200;
 
@@ -112,23 +112,7 @@ public  GamePanel(){
 
         Graphics g2= (Graphics2D)g ;
 
-        /*    int x = rows;
-            int y= rows;
 
-
-            for (int a = 0;a<x;a++){
-
-                for (int b=0;b<y;b++){
-                    if (graf_pole.get(b).get(a).getClass()==Entity.Cell.class){
-                        Entity.Cell cell = (Entity.Cell)graf_pole.get(b).get(a);
-                     cell.Draw(g2);
-
-
-                    }
-
-                }
-
-            }*/
 
         Cell cell = c;
         cell.Draw(g2);

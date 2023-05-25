@@ -13,18 +13,33 @@ public class Single_cell {
 public void setDefaultValues(){
     state_for="hidden";
     this.state = new Hidden(this);
-
+setBomb(false);
 
 }
 
     private State state;
+    private boolean bomb;
+private int numberOfBombs;
 private String  state_for;
     public void setState(State state) {
         this.state = state;
     }
 
+    public int getNumberOfBombs() {
+        return numberOfBombs;
+    }
 
+    public void setNumberOfBombs(int numberOfBombs) {
+        this.numberOfBombs = numberOfBombs;
+    }
 
+    public boolean isBomb() {
+        return bomb;
+    }
+
+    public void setBomb(boolean bomb) {
+        this.bomb = bomb;
+    }
 
     public void hidden() {
         state_for = "hidden";

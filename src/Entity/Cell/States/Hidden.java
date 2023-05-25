@@ -9,7 +9,8 @@ import Entity.Cell.State;
 public class Hidden extends State {
 
     public Hidden(Single_cell cell) {
-        super(cell);}
+        super(cell);
+    }
 
 
 
@@ -17,7 +18,9 @@ public class Hidden extends State {
     @Override
     public void onLeftClick() {
        cell.setState(new Shown(cell));
-
+         if (cell.isBomb()){
+             //Lost xdd
+         }
 
 
 

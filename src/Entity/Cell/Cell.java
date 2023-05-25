@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Cell extends Position {
 
@@ -20,7 +21,25 @@ ArrayList<Single_cell> single_cell= new ArrayList<Single_cell>();
     public Cell(GamePanel gp) {
        for (int i=0; i<gp.rows * gp.cols;i++) {
            single_cell.add(new Single_cell());
+
        }
+        int procent= (gp.rows * gp.cols)/100;
+        int value = gp.bomb/procent;
+        for (int i=0; i<gp.rows * gp.cols;i++) {
+            single_cell.add(new Single_cell());
+
+        }
+        int bomb= 0;
+        for (int i=0; i<gp.rows * gp.cols& bomb<gp.bomb;i++) {
+            Random rd = new Random();
+            int random= rd.nextInt((gp.rows* gp.cols)+1);
+    if(random<=value) {
+single_cell.get(i).setBomb(true);
+        bomb++;
+    }
+    Logic logic = new Logic(single_cell,gp);
+}
+
         this.gp = gp;
         getImage();
         setDefaultValues();
