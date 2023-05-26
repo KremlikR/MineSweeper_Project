@@ -2,11 +2,12 @@ package Entity.Cell;
 
 import Entity.Cell.States.Hidden;
 
+import javax.swing.*;
 
 
 public class Single_cell {
 
-    Single_cell(){
+    Single_cell(JButton jButton){
     setDefaultValues();
 
     }

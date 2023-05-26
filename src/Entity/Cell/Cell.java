@@ -1,9 +1,10 @@
 package Entity.Cell;
 
-import Entity.Cell.States.Hidden;
 import Core.GamePanel;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+
 import Entity.Position;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,13 +21,13 @@ ArrayList<Single_cell> single_cell= new ArrayList<Single_cell>();
 
     public Cell(GamePanel gp) {
        for (int i=0; i<gp.rows * gp.cols;i++) {
-           single_cell.add(new Single_cell());
+           single_cell.add(new Single_cell(new JButton()));
 
        }
         int procent= (gp.rows * gp.cols)/100;
         int value = gp.bomb/procent;
         for (int i=0; i<gp.rows * gp.cols;i++) {
-            single_cell.add(new Single_cell());
+            single_cell.add(new Single_cell(new JButton()));
 
         }
         int bomb= 0;

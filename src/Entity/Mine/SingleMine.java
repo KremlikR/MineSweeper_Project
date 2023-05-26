@@ -1,6 +1,6 @@
 package Entity.Mine;
 
-import Entity.Mine.States.Captured;
+import javax.swing.*;
 
 public class SingleMine {
 
@@ -20,6 +20,7 @@ public class SingleMine {
 
     private State state;
     private String  state_for;
+    private JButton jButton;
     public void setState(State state) {
         this.state =  state;
     }
