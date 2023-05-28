@@ -13,6 +13,7 @@ public class Shown extends State {
 
     @Override
     public void onLeftClick() {
+
         cell.setState(new Shown(cell));
     }
 

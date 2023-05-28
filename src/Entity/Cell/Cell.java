@@ -15,35 +15,41 @@ import java.util.Random;
 public class Cell extends Position {
 
 
-    GamePanel gp;
+    GamePanel gp; // Reference to the GamePanel instance
+    ArrayList<Single_cell> single_cell= new ArrayList<Single_cell>();// ArrayList to store individual cells
+    Logic logic = new Logic(single_cell,gp);// Instance of the Logic class to handle cell logic
 
-ArrayList<Single_cell> single_cell= new ArrayList<Single_cell>();
 
     public Cell(GamePanel gp) {
+        // Initializing the Single_cell objects and adding them to the ArrayList
        for (int i=0; i<gp.rows * gp.cols;i++) {
            single_cell.add(new Single_cell(new JButton()));
 
        }
-        int procent= (gp.rows * gp.cols)/100;
-        int value = gp.bomb/procent;
-        for (int i=0; i<gp.rows * gp.cols;i++) {
-            single_cell.add(new Single_cell(new JButton()));
+        int procent= (gp.rows * gp.cols)/100;// Percentage of the total cells
+        int value = gp.bomb/procent;// Number of bombs based on the percentage
 
-        }
         int bomb= 0;
-        for (int i=0; i<gp.rows * gp.cols& bomb<gp.bomb;i++) {
-            Random rd = new Random();
-            int random= rd.nextInt((gp.rows* gp.cols)+1);
-    if(random<=value) {
-single_cell.get(i).setBomb(true);
-        bomb++;
+        // Assigning bombs randomly to the Single_cell objects
+        while (bomb<gp.bomb){
+        for (int i=0; i<gp.rows * gp.cols;i++) {
+
+                Random rd = new Random();
+                int random= rd.nextInt((gp.rows* gp.cols)+1);
+                if(random<=value) {
+                    single_cell.get(i).setBomb(true);
+                    bomb++;
+                }
+
     }
-    Logic logic = new Logic(single_cell,gp);
+
+          logic = new Logic(single_cell,gp);// Initializing the Logic class with the Single_cell objects
+
 }
 
         this.gp = gp;
-        getImage();
-        setDefaultValues();
+        getImage();// Loading images
+        setDefaultValues();// Setting default values for position and state
 
     }
 
@@ -56,12 +62,12 @@ single_cell.get(i).setBomb(true);
 
     public void getImage() {
         try {
-
+            // Loading images from files
 
             hidden = ImageIO.read(getClass().getResourceAsStream("/Graphics/File.png"));
-            shown = ImageIO.read(getClass().getResourceAsStream("/Graphics/EIGHT.png"));
-            captured = ImageIO.read(getClass().getResourceAsStream("/Graphics/Flag.png"));
 
+            captured = ImageIO.read(getClass().getResourceAsStream("/Graphics/Flag.png"));
+bomb =ImageIO.read(getClass().getResourceAsStream("/Graphics/Mine.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,23 +93,25 @@ single_cell.get(i).setBomb(true);
         int row=0;
         int x=0;
         int y=0;
+
 int plus=0;
 
         while (col<gp.cols&& row<gp.rows){
 
             BufferedImage image= null;
             try{
-                state_for=single_cell.get(plus).getState_for();
 
-
-
-
-
+                single_cell.get(plus).setjButtonLocatoin(x,y);// Setting location for the JButton
+                single_cell.get(plus).setjButtonSize(gp.tileSize, gp.getTileSize());// Setting size for the JButton
+                gp.add(single_cell.get(plus).getjButton());// Adding the JButton to the GamePanel
+                single_cell.get(plus).setjButtonIcon(); // Setting icon for the JButton
             }catch (Exception e){
            e.printStackTrace();
 
             }
-            plus++;
+
+            state_for=single_cell.get(plus).getState_for();// Getting the state of the Single_cell
+
 
             switch (state_for){
                 case "hidden":
@@ -113,10 +121,21 @@ int plus=0;
                     image=captured;
                     break;
                 case "shown":
-                    image= shown;
+
+
+                    image= logic.findImage(single_cell.get(plus));// Finding appropriate image for the Single_cell
+                    if (single_cell.get(plus).getNumberOfBombs()==0)
+                    logic.ifCellIsZero(single_cell,gp,plus);
+
+                    if (single_cell.get(plus).isBomb()){
+                        image=bomb;
+System.exit(0);
+                    }
                     break;
 
             }
+
+            plus++;
             g2.drawImage(image,x,y,gp.getTileSize(), gp.getTileSize(), null);
 
             col++;
